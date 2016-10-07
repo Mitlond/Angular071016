@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="SampleApp">
+ <head>
+   <link href="bootstrap.css" rel="stylesheet"/>
+   <link href="bootstrap-theme.css" rel="stylesheet"/>
+   <script src="angular.js"></script>
+     <meta charset="utf-8">
+ <title>Handling</title>
+ <script>
+  angular.module("SampleApp",[])
+  .controller("defaultCtrl", function($scope){
+  $scope.tasks=[
+  {action: "Task1", complete:false},
+  {action: "Task2", complete:true},
+  {action: "Task3", complete:false},
+  {action: "Task4", complete:true}
+  ];
+  });
+ </script>
+</head>
+<body class="text-center well">
+<div class="panel panel-primary" ng-controller="defaultCtrl">
+<div class="panel-heading">
+<div class="panel-title">
+<h3>
+Незавершённые Задачи
+<span class="label label-info">
+{{(task| filter:{complete:false}).lenght}}
+</span>
+</h3>
+</div>
+</div>
+<table class="table">
+<tr ng-repeat="task in tasks">
+<td>{{task.action}}</td>
+<td> <input type="checkbox" ng-model="task.complete"/></td>
+</tr>
+</table>
+</div>
+</body>
+</html>
